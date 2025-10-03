@@ -22,5 +22,3 @@ for i in range(amount):
 print() 
 
 print("have a nice day :)")
-
-#pasted from command prompt
