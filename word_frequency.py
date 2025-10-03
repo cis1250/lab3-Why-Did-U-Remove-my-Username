@@ -1,40 +1,33 @@
 import re
 
-
 def is_sentence(text):
-   
+    
     if not isinstance(text, str) or not text.strip():
         return False
-
-
-    if not text[0].isupper():
+        
+    stripped = text.lstrip()
+    if not stripped[0].isupper():
         return False
-
-    if not re.search(r'[.!?]$', text):
+        
+    if not re.search(r'[.!?]$', stripped):    # REMEMBER TO ADD A CAPITIAL AT THE START AND A PEROID LIKE A NORMAL SETENCE FOR IT TO PROPERLY WORK
         return False
-
-
-    if not re.search(r'\w+', text):
+        
+    if not re.search(r'\w+', stripped):
         return False
-
+        
     return True
 
-
--
 user_sentence = input("Enter a sentence: ")
 
 while is_sentence(user_sentence) == False:
     print("This does not meet the criteria for a sentence.")
     user_sentence = input("Enter a sentence: ")
 
-
 clean_sentence = re.sub(r'[^\w\s]', '', user_sentence).lower()
 words = clean_sentence.split()
 
-
 unique_words = []
 frequencies = []
-
 
 for word in words:
     if word in unique_words:
